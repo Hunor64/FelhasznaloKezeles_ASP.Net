@@ -5,3 +5,16 @@
 }
 <h1>@ViewData["Title"]</h1>
 <p>Felhasználó: @User?.Identity?.Name</p>
+@if(User.IsInRole("Admin"))
+{
+    <p>Adminisztrátor</p>
+}
+else if(User.IsInRole("Editor"))
+{
+    <p>Szerkesztő</p>    
+
+}
+else
+{
+    <p>Normál felhasználó</p>
+}
