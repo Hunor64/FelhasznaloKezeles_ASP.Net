@@ -4,12 +4,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace FelhasznaloKezeles.Pages
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class VedettOldalModel : PageModel
     {
         
         public void OnGet()
         {
+
         }
     }
 }
