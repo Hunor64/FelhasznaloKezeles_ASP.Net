@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 namespace FelhasznaloKezeles.Pages
 {
     [Authorize(Roles = "Admin")]
+    //[Authorize(Policy = "CanEditAll")]
     public class VedettOldalModel : PageModel
     {
         

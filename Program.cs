@@ -13,7 +13,9 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 //    .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultUI()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddCors(options =>
 {
@@ -27,6 +29,16 @@ builder.Services.AddCors(options =>
         );
 }
 );
+
+builder.Services.AddAuthentication(options =>
+{
+    /*
+    options.AdSPolicy("CanEditAll", policy =>
+    {
+        policy.RequireClaim("CanEdit", "True");
+    });
+    */
+});
 
 builder.Services.AddRazorPages();
 
@@ -52,5 +64,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseCors();
 
 app.Run();
