@@ -14,6 +14,20 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //    .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultUI().AddDefaultTokenProviders();
+
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        p =>
+        {
+            p.AllowAnyOrigin()
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        }
+        );
+}
+);
+
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
